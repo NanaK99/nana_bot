@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Environment
+.env
+.venv/
+env/
+venv/
+.idea/
+
+# Streamlit
+.streamlit/
+
+# Indexes
+index/
+faiss_index/
+*.faiss
+*.npy
+*.npz
+meta.json
+
+# System
+.DS_Store
+
+# ignore files inside data/ except the README
+data/*
+!data/README.md
+
