@@ -31,7 +31,7 @@ class ChatGraph:
 
         g.set_entry_point("guardrail")
         g.add_conditional_edges("guardrail",
-                                lambda state: END if state["answer"] else "retrieve")
+                                lambda state: ("retrieve" if state["guardrail_passed"] else END))
 
         g.add_edge("retrieve", "generate")
         g.add_edge("generate", END)

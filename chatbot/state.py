@@ -6,3 +6,4 @@ class GraphState(TypedDict):
     history: List[Tuple[str, str]]
     contexts: List[Document]
     answer: Optional[str]
+    guardrail_passed: Optional[bool]
