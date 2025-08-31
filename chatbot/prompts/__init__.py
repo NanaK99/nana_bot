@@ -1,0 +1,2 @@
+from chatbot.prompts.generator import GENERATOR_SYSTEM_PROMPT
+from chatbot.prompts.guardrail import GUARDRAIL_SYSTEM_PROMPT

@@ -10,10 +10,9 @@ from langchain.docstore.document import Document
 from pypdf import PdfReader
 
 load_dotenv()
-DATA_DIR = Path("data")
-INDEX_DIR = Path("index/faiss_index")
-INDEX_DIR.mkdir(parents=True, exist_ok=True)
 
+DATA_DIR = Path(os.getenv("DATA_DIR", "data"))
+INDEX_DIR = Path(os.getenv("INDEX_DIR", "index/faiss_index"))
 EMBED_MODEL = os.getenv("OPENAI_EMBED_MODEL", "text-embedding-3-small")
 
 def read_pdf(path: Path) -> str:
@@ -52,6 +51,7 @@ def main():
     embeddings = OpenAIEmbeddings(model=EMBED_MODEL)
     vs = FAISS.from_documents(chunks, embedding=embeddings)
 
+    INDEX_DIR.mkdir(parents=True, exist_ok=True)
     vs.save_local(str(INDEX_DIR))
     print(f"Saved {len(chunks)} chunks to {INDEX_DIR}")
 
